@@ -12,6 +12,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 
+import Detail from './pages/Detail';
+import Products from './pages/Products/Products';
+
 const Stack = createStackNavigator();
 
 function Router() {
@@ -19,8 +22,8 @@ function Router() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen />
-        <Stack.Screen />
+        <Stack.Screen name="Products" component={Products}/>
+        <Stack.Screen name="Detail" component={Detail}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
