@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import styles from './Products.styles';
+import styles from './ProductsCard.styles';
 
 function ProductsCard({products}) {
     return (
