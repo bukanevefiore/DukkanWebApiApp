@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, SafeAreaView, FlatList, ActivityIndicator } from 'react-native';
-//import Config from 'react-native-config';
+import Config from 'react-native-config';
 import ProductsCard from '../../components/ProductsCard';
 import UseFetch from '../../hooks/useFetch';
 import Loading from '../../components/Loading';
@@ -11,7 +11,7 @@ function Pruducts({navigation}) {
     //  console.log(Config.API_URL);
 
     const url = 'https://fakestoreapi.com/products';
-    const {loading, data, error } = UseFetch(url);
+    const {error, loading, data} = UseFetch(url);
     //console.log(data);
 
    function handleProductSelect(id) {
@@ -22,11 +22,11 @@ function Pruducts({navigation}) {
 
     if(loading) {
         //return <ActivityIndicator size='large' />
-        //return <Loading />
+        return <Loading />;
     }
 
     if(error) {
-        //return <Error />
+        return <Error />;
     }
 
     return (
