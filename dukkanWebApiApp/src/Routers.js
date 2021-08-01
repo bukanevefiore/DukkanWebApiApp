@@ -12,7 +12,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 
-import Detail from './pages/Detail';
+import Detail from './pages/Detail/Detail';
 import Products from './pages/Products/Products';
 
 const Stack = createStackNavigator();

@@ -1,30 +1,38 @@
-import React, {useState, useEffect} from 'react';
-import { View, Text, SafeAreaView, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, SafeAreaView, FlatList, ActivityIndicator } from 'react-native';
 //import Config from 'react-native-config';
 import axios from 'react-native-axios';
 import ProductsCard from '../../components/ProductsCard';
+import UseFetch from '../../hooks/useFetch';
+import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 
 
-function Pruducts() {
-  //  console.log(Config.API_URL);
+function Pruducts({navigation}) {
+    //  console.log(Config.API_URL);
 
+    const url = 'https://fakestoreapi.com/products';
+    const {loading, data, error } = UseFetch(url);
+    //console.log(data);
 
-    const [data, setData] = useState([]);
+   function handleProductSelect(id) {
+       navigation.navigate('Detail', {id});
+   }
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    renderProduct = ({ item }) => <ProductsCard products={item} onSelected={() => handleProductSelect(item.id)}/>;
 
-    const fetchData = async () => {
-        const {data: productData} = await axios.get('https://fakestoreapi.com/products');
-        setData(productData);
+    if(loading) {
+        //return <ActivityIndicator size='large' />
+        //return <Loading />
     }
 
-    renderProduct = ({item}) => <ProductsCard products={item}/>;
+    if(error) {
+        //return <Error />
+    }
 
-    return(
+    return (
         <SafeAreaView>
-            <FlatList data={data} renderItem={renderProduct}/>
+            <FlatList data={data} renderItem={renderProduct} />
         </SafeAreaView>
     )
 }

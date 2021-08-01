@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import styles from './ProductsCard.styles';
 
-function ProductsCard({products}) {
+function ProductsCard({products, onSelected}) {
     return (
-        <View style={styles.container}>
+        <TouchableWithoutFeedback onPress={onSelected}>
+            <View style={styles.container}>
             <Image style={styles.image}
             source={{uri: products.image}}
             />
@@ -13,6 +14,7 @@ function ProductsCard({products}) {
                 <Text style={styles.price}>{products.price}</Text>
             </View>
         </View>
+        </TouchableWithoutFeedback>
     )
 }
 
