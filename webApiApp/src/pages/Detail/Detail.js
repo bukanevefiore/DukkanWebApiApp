@@ -11,8 +11,8 @@ function Detail({route}) {
 
     const {id} = route.params;
 
-    const url = 'https://fakestoreapi.com/products';
-    const {error, loading, data} = useFetch(url+'/'+id);
+    //const url = 'https://fakestoreapi.com/products';
+    const {error, loading, data} = useFetch(Config.API_URL+'/'+id);
     console.log(data.title);
 
     if(loading) {

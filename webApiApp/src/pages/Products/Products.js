@@ -10,8 +10,8 @@ import Error from '../../components/Error';
 function Pruducts({navigation}) {
     //  console.log(Config.API_URL);
 
-    const url = 'https://fakestoreapi.com/products';
-    const {error, loading, data} = UseFetch(url);
+    //const url = 'https://fakestoreapi.com/products';
+    const {error, loading, data} = UseFetch(Config.API_URL);
     //console.log(data);
 
    function handleProductSelect(id) {
