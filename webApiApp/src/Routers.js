@@ -14,6 +14,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Detail from './pages/Detail/Detail';
 import Products from './pages/Products/Products';
+import Login from './pages/Login';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ function Router() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
         <Stack.Screen name="Products" component={Products}/>
         <Stack.Screen name="Detail" component={Detail}/>
       </Stack.Navigator>
