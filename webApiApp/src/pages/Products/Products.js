@@ -5,14 +5,14 @@ import ProductsCard from '../../components/ProductsCard';
 import UseFetch from '../../hooks/useFetch';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
+import { useSelector } from 'react-redux';
 
 
 function Pruducts({navigation}) {
-    //  console.log(Config.API_URL);
-
     //const url = 'https://fakestoreapi.com/products';
-    const {error, loading, data} = UseFetch(Config.API_URL);
+    const {error, loading, data} = UseFetch(Config.API_PRODUCT_URL);
     //console.log(data);
+    const user = useSelector(s => s.user);
 
    function handleProductSelect(id) {
        navigation.navigate('Detail', {id});
@@ -31,6 +31,7 @@ function Pruducts({navigation}) {
 
     return (
         <SafeAreaView>
+            <Text>{user.username}</Text>
             <FlatList data={data} renderItem={renderProduct} />
         </SafeAreaView>
     )
